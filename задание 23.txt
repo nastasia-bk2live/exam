@@ -1,0 +1,109 @@
+задание 23
+
+23
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+int f(int a, int n) {
+	int s = 0;
+	if (n == a) return 1;
+	s = f(a, n - 1);
+	if (n % 10 == 9 && (n / 10 - 1) * 10 + 9 >= a) s += f(a, (n / 10 - 1) * 10 + 9);
+	if (n / 10 - 1 >= 0 && n % 10 - 1 >= 0 && (n / 10 - 1) * 10 + n % 10 - 1 >= a) s += f(a, (n / 10 - 1) * 10 + n % 10 - 1);
+	return s;
+}
+int main() {
+	cout << f(26, 49);
+}
+
+
+41
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+int f(int a, int n) {
+	int s = 0;
+	if (n == a) return 1;
+	s = f(a, n - 1);
+	if (n - 2 >= a) s += f(a, n - 2);
+	if (n%2!=0 && n / 2 + 1 >= a)s += f(a, n / 2 + 1);
+	return s;
+
+}
+int main() {
+	cout << f(2, 9);
+}
+
+54
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+int f(int a, int n) {
+	int s = 0;
+	if (n == a) return 1;
+	s = f(a, n - 1);
+	if (n % 2 == 0 && n/2>=a)s += f(a, n / 2);
+	return s;
+
+}
+int main() {
+	cout << f(1, 10) * f(10, 21);
+}
+
+60
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+int f(int a, int n) {
+	int s = 0;
+	if (n == a) return 1;
+	s = f(a, n - 1);
+	if (n % 2 == 0 && n / 2 >= a) s += f(a, n / 2);
+	return s;
+
+}
+int main() {
+	cout << (f(2, 20) - f(2, 8) * f(8, 20)) * f(20, 40);
+}
+
+
+73
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+int f(int a, int n) {
+	int s = 0;
+	if (n == a) return 1;
+	s = f(a, n - 1);
+	if (n - 2 >= a) s += f(a, n - 2);
+	if (n % 2 == 0 && n / 2 >= a) s += f(a, n / 2);
+	return s;
+}
+int main() {
+	cout << f(2, 10) * f(10, 12);
+}

@@ -1,0 +1,65 @@
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+int main() {
+	int n, a, count = 0;
+	vector <int>arr;
+	cin >> n;
+	for (int i = 0; i < n; i++){
+		cin >> a;
+		arr.push_back(a);
+	}
+	for (int i = 0; i < n; i++){
+		for (int j = i+1; j < n; j++){
+			if (arr[i] * arr[j] % 14 != 0) count++;
+		}
+	}
+	cout << count;
+}
+
+int main() {
+	int n, a, count = 0, ind2 = 0, ind7 = 0, ind14 = 0;
+	vector <int>arr;
+	cin >> n;
+	for (int i = 0; i < n; i++){
+		cin >> a;
+		count += i;
+		if (a % 14 == 0)
+			count -= i;
+		else if (a % 7 == 0)
+			count = count - ind14 - ind2;
+		else if (a % 2 == 0)
+			count = count - ind14 - ind7;
+		else count = count - ind14;
+		if (a % 14 == 0) ind14++;
+		else if (a % 7 == 0) ind7++;
+		else if (a % 2 == 0) ind2++;
+	}
+	cout << count;
+}
+
+int main() {
+	int n, a, count = 0, ind2 = 0, ind7 = 0, ind14 = 0, ans = 0;
+	vector <int>arr;
+	cin >> n;
+	for (int i = 0; i < n; i++){
+		cin >> a;
+		if (a % 14 == 0)
+			count += i;
+		else if (a % 7 == 0)
+			count +=(ind14 + ind2);
+		else if (a % 2 == 0)
+			count += (ind14 + ind7);
+		else count += ind14;
+		if (a % 14 == 0) ind14++;
+		else if (a % 7 == 0) ind7++;
+		else if (a % 2 == 0) ind2++;
+	}
+	ans = n * (n - 1) / 2 - count;
+	cout << ans;
+}

@@ -1,0 +1,44 @@
+#include <iostream>
+#include <algorithm>
+#include <ctime>
+#include <cstdlib>
+#include <fstream>
+#include <vector>
+using namespace std;
+
+
+void main() {
+	ifstream in;
+	in.open("input.txt");
+	int sum = 0;
+	vector<int> osts(11, 1000001);
+	vector<int> osts_1(11, 1000001);
+	int n, a, b, c, delta1, delta2;
+	vector<int> abc(3);
+	in >> n;
+	for (int i = 0; i < n; i++) {
+		in >> abc[0] >> abc[1] >> abc[2];
+		sort(abc.begin(), abc.end());
+		sum += abc[0];
+		delta1 = abc[2] - abc[0];
+		delta2 = abc[1] - abc[0];
+		osts_1 = osts;
+		for (int o = 0; o < 11; o++) {
+			osts_1[(delta1 + o) % 11] = min(osts[(delta1 + o) % 11], delta1 + osts[o]);
+		}
+		osts_1[delta1 % 11] = min(osts[delta1 % 11], delta1);
+		osts = osts_1;
+		osts_1 = osts;
+		for (int o = 0; o < 11; o++) {
+			osts_1[(delta2 + o) % 11] = min(osts[(delta2 + o) % 11], delta2 + osts[o]);
+		}
+		osts_1[delta2 % 11] = min(osts[delta2 % 11], delta2);
+		osts = osts_1;
+	}
+	if (sum % 11 == 0) {
+		cout << sum;
+	}
+	else {
+		cout << sum + osts[11- sum%11];
+	}
+}

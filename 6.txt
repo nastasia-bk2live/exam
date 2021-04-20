@@ -1,0 +1,96 @@
+задание 6
+
+116
+#include <iostream>
+using namespace std;
+int main() {
+    int d;
+    for (int i = 0; i < 100; i++) {
+        d = i;
+        int n = 1;
+        while (d / n > 0) {
+            d = d - 2;
+            n = n + 3;
+        }
+        cout << i << " "<< n << endl;
+    }
+    return 0;
+}
+
+ответ 7571
+
+109
+#include <iostream>
+using namespace std;
+int main() {
+    int s, n = 400;
+    for (int i = 0; i < 410; i++) {
+        s = i;
+        while (s - n > 0) {
+            s = s - 20;
+            n = n - 15;
+        }
+        cout << i << " " << s << endl;
+
+    }
+    return 0;
+}
+
+ответ 404
+
+102
+#include <iostream>
+using namespace std;
+int main() {
+    int s, n;
+    for (int i = 0; i < 1000; i++) {
+        n = 1;
+        s = i;
+        while (n < 21) {
+            s = s - 1;
+            n = n + 2;
+        }
+        if(s>600)
+            cout << i << " " << s << endl;
+
+    }
+    return 0;
+}
+
+ответ 611
+
+76
+#include <iostream>
+using namespace std;
+int main() {
+	int s, n;
+	for (int i = 0; i < 1000; i++) {
+		n = 105;
+		s = i;
+		while (n > s) {
+			s = s + 3;
+			n = n - 2;
+		}
+		if (n == 67)
+			cout << i << " " << n << endl;
+	}
+}
+
+
+ответ 14
+
+
+54
+#include <iostream>
+using namespace std;
+int main() {
+    int s = 20, n = 0;
+    while (121 < s * s) {
+        s = s - 1;
+        n = n + 3;
+    }
+    cout << n;
+    return 0;
+}
+
+ответ 27

@@ -1,0 +1,308 @@
+#258
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+bool f(int a, int y, int x) {
+	return ((x < 11) || (x * x + 2 * x > a)) && ((y * y + 3 * y < a) || (y > 8));
+}
+
+int main() {
+	int a, n = 0;
+	bool flag;
+	for (a = 1; a <10000; a++){
+		flag = true;
+		for (int x = 1; x < 10000; x++){
+			for (int y = 1; y < 1000; y++){
+				if (!f(a, x, y)) {
+					flag = false;
+				}
+				if (!flag) break;
+			}
+		}
+		if (flag) n++;
+	}
+	cout << n;
+}
+#265
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+bool f(int a, int y, int x) {
+	return ((x < 8) && (x*x >= a)) || ((y*y <=  a) && (y > 8));
+}
+
+int main() {
+	int a, n = 0;
+	bool flag;
+	for (a = 1; a <10000; a++){
+		flag = true;
+		for (int x = 1; x < 10000; x++){
+			for (int y = 1; y < 1000; y++){
+				if (f(a, x, y)) {
+					flag = false;
+				}
+				if (!flag) break;
+			}
+		}
+		if (flag) n++;
+	}
+	cout << n;
+}
+
+#273
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+bool f(int a, int y, int x) {
+	return (((x + 5)*(x - 6) < 0) && (x*x >= a)) || ((y*y <= a) && ((y + 5)*(y-6) > 0));
+}
+
+int main() {
+	int a, n = 0;
+	bool flag;
+	for (a = 1; a <10000; a++){
+		flag = true;
+		for (int x = 1; x < 10000; x++){
+			for (int y = 1; y < 1000; y++){
+				if (f(a, x, y)) {
+					flag = false;
+				}
+				if (!flag) break;
+			}
+		}
+		if (flag) n++;
+	}
+	cout << n;
+}
+
+#294
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+bool f(int a, int y, int x) {
+	return (y + 4 * x < a) || (x + 3 * y > 100) || (5 * x + 2 * y > 150);
+}
+
+int main() {
+	int a, n = 0;
+	bool flag;
+	for (a = 1; a <10000; a++){
+		flag = true;
+		for (int x = 1; x < 10000; x++){
+			for (int y = 1; y < 10000; y++){
+				if (!f(a, x, y)) {
+					flag = false;
+				}
+				if (!flag) break;
+			}
+		}
+		if (flag) break ;
+	}
+	cout << a;
+}
+
+#300
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+bool f(int a, int y, int x) {
+	return (y - x > a) || (x + 4*y > 40) || (y - 2*x < -35);
+}
+
+int main() {
+	int a, n = 0;
+	bool flag;
+	for ( a = 1000; a > -100; a--){
+		flag = true;
+		for (int x = 1; x < 10000; x++){
+			for (int y = 1; y < 10000; y++){
+				if (!f(a, x, y)) {
+					flag = false;
+				}
+				if (!flag) break;
+			}
+		}
+		if (flag) break;
+	}
+	cout << a;
+}
+
+#312
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+bool f(int a, int y, int x) {
+	return (3 * y + 2 * x != 130) || (3 * x > a) || (2 * y > a);
+}
+
+int main() {
+	int a;
+	bool flag;
+	for (a = 1000; a > 0; a--){
+		flag = true;
+		for (int x = 1; x < 1000; x++){
+			for (int y = 1; y < 1000; y++){
+				if (!f(a, x, y)) {
+					flag = false;
+				}
+				if (!flag) break;
+			}
+		}
+		if (flag) break;
+	}
+	cout << a;
+}
+
+№320
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+bool f(int a, int y, int x) {
+	return (2 * y + 4 * x != 100) || (9 * x > a) || (3 * y > a);
+}
+
+int main() {
+	int a;
+	bool flag;
+	for (a = 1000; a > 0; a--){
+		flag = true;
+		for (int x = 1; x < 1000; x++){
+			for (int y = 1; y < 1000; y++){
+				if (!f(a, x, y)) {
+					flag = false;
+				}
+				if (!flag) break;
+			}
+		}
+		if (flag) break;
+	}
+	cout << a;
+}
+
+№341
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+bool f(int a, int y, int x) {
+	return (4 * y + 6 * x != 34) || (a>5*x+3*y) || (a>4*y+15*x-35);
+}
+
+int main() {
+	int a;
+	bool flag;
+	for (a = 0; a < 1000; a++){
+		flag = true;
+		for (int x = 1; x < 1000; x++){
+			for (int y = 1; y < 1000; y++){
+				if (!f(a, x, y)) {
+					flag = false;
+				}
+				if (!flag) break;
+			}
+		}
+		if (flag) break;
+	}
+	cout << a;
+}
+
+№358
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+bool f(int a, int y, int x) {
+	return !((y <= abs(x * x - 4 * x - 5)) ^ ((y <= x * x - 4 * x - 5) || (y <= -(x - 2) * (x - 2) + a)));
+}
+
+int main() {
+	int a;
+	bool flag;
+	for (a = 0; a < 1000; a++){
+		flag = true;
+		for (int x = 1; x < 1000; x++){
+			for (int y = 1; y < 1000; y++){
+				if (!f(a, x, y)) {
+					flag = false;
+				}
+				if (!flag) break;
+			}
+		}
+		if (flag) break;
+	}
+	cout << a;
+}
+
+№368
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+bool f(int a, int y, int x) {
+	return (x * x - 10 * x + 16 > 0) || (y * y - 10 * y + 21 > 0) || (x * y < 2 * a);
+}
+
+int main() {
+	int a;
+	bool flag;
+	for (a = 0; a < 1000; a++){
+		flag = true;
+		for (int x = 1; x < 1000; x++){
+			for (int y = 1; y < 1000; y++){
+				if (!f(a, x, y)) {
+					flag = false;
+				}
+				if (!flag) break;
+			}
+		}
+		if (flag) break;
+	}
+	cout << a;
+}

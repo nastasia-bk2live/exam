@@ -1,0 +1,60 @@
+задание 57
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+
+using namespace std;
+
+
+
+int main() {
+	int a, r, n, r1 = -1, sum;
+	vector<int> arr;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		cin >> a;
+		arr.push_back(a);
+	}
+	cin >> r;
+	for (int i = 0; i < n; i++)
+		for (int j = i+1; j < n; j++) {
+			sum = arr[i] + arr[j];
+			if (sum%2 != 0 && sum > r1) r1 = sum;
+		}
+	cout << "Получено " << n << "чисел\n";
+	cout << "Полученное контрольное значение: " << r << endl;
+	cout << "Вычисленное контрольное значение: " << r1 << endl;
+	if (r != r1) cout << "контроль не пройден";
+	else cout << "контроль пройден";
+	return 0;
+}
+
+
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+
+using namespace std;
+
+
+
+int main() {
+	int a, max2 = 0, max = 0, r, n , r1;
+	cin >> n;
+	for (int i = 0; i < n; i++){
+		cin >> a;
+		if (a % 2 == 0 && a > max2) max2 = a;
+		if (a % 2 != 0 && a > max) max = a;
+	}
+	cin >> r;
+	if (max2 == 0 || max == 0) r1 = -1;
+	else r1 = max2 + max;
+	cout << "Получено " << n << "чисел\n";
+	cout << "Полученное контрольное значение: " << r << endl;
+	cout << "Вычисленное контрольное значение: " << r1 << endl;
+	if (r != r1) cout << "контроль не пройден";
+	else cout << "контроль пройден";
+	return 0;
+}

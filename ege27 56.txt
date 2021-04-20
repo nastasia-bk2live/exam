@@ -1,0 +1,76 @@
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+int main() {
+	int a, n, buf[5], min = 1000000;
+	vector<int> arr;
+	cin >> n;
+	for (int i = 0; i < n; i++){
+		cin >> a;
+		arr.push_back(a);
+	}
+	for (int i = 0; i < n; i++){
+		for (int j = i+6; j < n; j++){
+			if (arr[i] * arr[j] < min) min = arr[i] * arr[j];
+		}
+	}
+	cout << min;
+}
+
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+int main() {
+	int a, n, buf[6], mp = 1000000, tmin;
+	cin >> n;
+	for (int i = 0; i < 6; i++){
+		cin >> buf[i];
+	}
+	tmin = buf[0];
+	for (int i = 6; i < n; i++){
+		cin >> a;
+		tmin = min(tmin, buf[0]);
+		if (i == 6 || a * tmin < mp)
+			mp = tmin * a;
+		for (int j = 0; j < 5; j++){
+			buf[j] = buf[j + 1];
+		}
+		buf[5] = a;
+	}
+	cout << mp;
+}
+
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+int main() {
+	int a, n, buf[6], mp = 1000000, tmin;
+	cin >> n;
+	for (int i = 0; i < 6; i++){
+		cin >> buf[i];
+	}
+	tmin = buf[0];
+	for (int i = 6; i < n; i++){
+		cin >> a;
+		tmin = min(tmin, buf[i%6]);
+		if (i == 6 || a * tmin < mp)
+			mp = tmin * a;
+		buf[i % 6] = a;
+	}
+	cout << mp;
+}

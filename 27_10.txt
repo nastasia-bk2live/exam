@@ -1,0 +1,35 @@
+#include <iostream>
+#include <algorithm>
+#include <ctime>
+#include <cstdlib>
+#include <fstream>
+#include <vector>
+using namespace std;
+
+
+void main() {
+	ifstream in;
+	in.open("input.txt");
+	int sum = 0;
+	int n, a, b, c, delta1, delta2, min_delta = 1000000;
+	vector<int> abc(3);
+	in >> n;
+	for (int i = 0; i < n; i++) {
+		in >> abc[0] >> abc[1] >> abc[2];
+		sort(abc.begin(), abc.end());
+		sum += abc[2];
+		if (abc[2]-abc[1] != 0 && abc[2]-abc[1] % 4 != 0)
+			delta1 = abc[2] - abc[1];
+		else delta1 = 10000000;
+		if (abc[2] - abc[0] != 0 && abc[2] - abc[0] % 4 != 0)
+			delta2 = abc[2] - abc[0];
+		else delta2 = 10000000;
+		min_delta = min(min(delta1, delta2), min_delta);
+	}
+	if (sum % 4 != 0) {
+		cout << sum;
+	}
+	else {
+		cout << sum - min_delta;
+	}
+}

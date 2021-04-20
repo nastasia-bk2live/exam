@@ -1,0 +1,56 @@
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+int main() {
+	int a, n, nmax = 0;
+	vector<int> arr;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		cin >> a;
+		arr.push_back(a);
+	}
+	for (int i = 0; i < n; i++) {
+		for (int j = i + 5; j < n; j++) {
+			if (arr[i] * arr[j]%13 ==0 && arr[i]+arr[j]!=0) nmax++;
+		}
+	}
+	cout << nmax;
+}
+
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+int main() {
+	int a, n, ans = 0, buf[5], mp = 0, n13_1=0, n13_2 = 0, n1=0, n2= 0;
+	cin >> n;
+	for (int i = 0; i < 5; i++){
+		cin >> buf[i];
+	}
+	for (int i = 5; i < n; i++){
+		cin >> a;
+		if (buf[i % 5] % 2 != 0)n1++;
+		else n2++;
+		if (buf[i % 5] % 13 == 0 && buf[i % 5] % 2 != 0)n13_1++;
+		if (buf[i % 5] % 13 == 0 && buf[i % 5] % 2 == 0)n13_2++;
+		if (a % 13 == 0) {
+			if( a % 2 == 0) ans += n1;
+			if ( a % 2 != 0) ans += n2;
+		}
+		else {
+			if (a % 2 == 0) ans += n13_1;
+			if (a % 2 != 0) ans += n13_2;
+		}
+		buf[i % 5] = a;
+	}
+	cout << ans;
+}

@@ -1,0 +1,28 @@
+задание 24
+
+141)	Текстовый файл 24-s1.txt состоит не более чем из 106 заглавных латинских букв (A..Z). Текст разбит на строки различной длины. Определите количество строк, в которых встречается комбинация F*O, где звёздочка обозначает любой символ.
+
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+int main() {
+    ifstream in;
+    string s;
+    int count = 0, n=1;
+    bool flag;
+    in.open("in.txt");
+    while (n<=1000) {
+        in >> s;
+        flag = false;
+        for (int i = 0; i < s.size()-2; i++) {
+            if (s[i] == 'F' && s[i + 2] == 'O') flag = true;
+        }
+        if (flag) count++;
+        n++;
+    }
+    cout << count;
+}
+
+
+ответ 757

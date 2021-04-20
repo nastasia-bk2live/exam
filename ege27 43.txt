@@ -1,0 +1,72 @@
+задание 43
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+
+using namespace std;
+
+
+
+int main() {
+	int a, n, min2= 60001, sum;
+	vector<int> arr;
+	cin >> n;
+	for (size_t i = 0; i < n; i++) {
+		cin >> a;
+		arr.push_back(a);
+	}
+	for (size_t i = 0; i < n; i++) 
+		for (size_t j = i+1; j < n; j++) {
+			sum = arr[i] + arr[j];
+			if (sum % 2 == 0 && sum < min2) min2 = sum;
+	}
+	if (n == 2) {
+		cout << arr[0]+arr[1];
+	}
+	else
+		cout << min2;
+	return 0;
+}
+
+
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+
+using namespace std;
+
+
+
+int main() {
+	int a, n, min2_1 = 30001, min2_2 = 30001, min_1 = 30001, min_2 = 30001, sum= 0;
+	cin >> n;
+	for (size_t i = 0; i < n; i++){
+		cin >> a;
+		if (a % 2 == 0) {
+			if (a <= min2_1) {
+				min2_2 = min2_1;
+				min2_1 = a;
+			}
+			else if (a <= min2_2) min2_2 = a;
+		}
+		else 
+			if (a <= min_1) {
+				min_2 = min_1;
+				min_1 = a;
+			}
+			else if (a <= min_2) min_2 = a;
+	}
+	if (n == 2) {
+		if (min_1 < 30001) sum += min_1;
+		if (min2_2 < 30001) sum += min2_2;
+		if (min2_1 < 30001) sum += min2_1;
+		if (min_2 < 30001) sum += min_2;
+		cout << sum;
+	}
+	else
+		if (min_1 + min_2 < min2_1 + min2_2) cout << min_1 + min_2;
+		else cout << min2_1 + min2_2;
+	return 0;
+}

@@ -1,0 +1,44 @@
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+#include <fstream>
+
+using namespace std;
+
+
+int main() {
+	ifstream in;
+	in.open("input.txt");
+	int  count =0;
+	int cou[256] = { 0 };
+	char a, b, amax = 0;
+	in >> a;
+	count++;
+	while (!in.eof()) {
+		in >> b;
+		if (b == a) {
+			count++;
+			if (count > cou[b]) cou[b] = count;
+			if (cou[b] > cou[amax])amax = b;
+		}
+		else {
+			a = b;
+			count =1;
+		}
+	}
+	for (char i = '0'; i <= '9'; i++) {
+		if (cou[i] == cou[amax]) {
+			cout << i << " " << cou[i];
+			cout << endl;
+		}
+	}
+	for (char i = 'A'; i <= 'Z'; i++) {
+		if (cou[i] == cou[amax]) {
+			cout << i << " " << cou[i];
+			cout << endl;
+		}
+	}
+	in.close();
+}

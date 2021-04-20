@@ -1,0 +1,65 @@
+#include <iostream>
+#include <algorithm>
+#include <ctime>
+#include <cstdlib>
+#include <fstream>
+using namespace std;
+
+
+void main() {
+	ifstream in;
+	in.open("input.txt");
+	int sum = 0, res = 1000000;
+	int n, par[20][2], t, i;
+	in >> n;
+	for (i = 0; i < n; i++) {
+		in >> par[i][0] >> par[i][1];
+	}
+	for (i = 0; i < 1024 * 1024; i++) {
+		t = i;
+		sum = 0;
+		for (int j = 0; j < n; j++) {
+			sum += par[j][t % 2];
+			t /= 2;
+
+		}
+		if (sum < res && sum % 16 == 15) res = sum;
+	}
+	cout << res;
+}
+
+#include <iostream>
+#include <algorithm>
+#include <ctime>
+#include <cstdlib>
+#include <fstream>
+#include <vector>
+using namespace std;
+
+
+void main() {
+	ifstream in;
+	in.open("input.txt");
+	int sum = 0;
+	vector<int> osts(16, 1000001);
+	vector<int> osts_1(16, 1000001);
+	int n, a, b, delta;
+	in >> n;
+	for (int i = 0; i < n; i++) {
+		in >> a >> b;
+		sum += min(a, b);
+		delta = abs(a - b);
+		osts_1 = osts;
+		for (int o = 0; o < 16; o++) {
+			osts_1[(delta + o) % 16] = min(osts[(delta + o) % 16], delta + osts[o]);
+		}
+		osts_1[delta % 16] = min(osts[delta % 16], delta);
+		osts = osts_1;
+	}
+	if (sum % 16 == 15) {
+		cout << sum;
+	}
+	else {
+		cout << sum + osts[15 - sum % 16];
+	}
+}

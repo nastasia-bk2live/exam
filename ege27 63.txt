@@ -1,0 +1,79 @@
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+int main() {
+	int a, n, max = 0;
+	vector<int> arr;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		cin >> a;
+		arr.push_back(a);
+	}
+	for (int i = 0; i < n; i++) {
+		for (int j = i + 9; j < n; j++) {
+			if (arr[i] * arr[j] > max && arr[i] * arr[j]%2 ==0) max = arr[i] * arr[j];
+		}
+	}
+	cout << max;
+}
+
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+
+int main() {
+	int a, n, buf[9], mp = 0, tmax2 =-1, tmax1=0;
+	cin >> n;
+	for (int i = 0; i < 9; i++){
+		cin >> buf[i];
+	}
+	for (int i = 9; i < n; i++){
+		cin >> a;
+		if (buf[0] % 2 == 0)
+			tmax2 = max(tmax2, buf[0]);
+		tmax1 = max(tmax1, buf[0]);
+		if (a % 2 == 0 && a * tmax1 > mp) mp = a * tmax1;
+		if (a % 2 != 0 && a * tmax2 > mp) mp = a * tmax2;
+		for (int j = 0; j < 3; j++){
+			buf[j] = buf[j + 1];
+		}
+		buf[3] = a;
+	}
+	cout << mp;
+}
+
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+int main() {
+	int a, n, buf[9], mp = 0, tmax2 =-1, tmax1=0;
+	cin >> n;
+	for (int i = 0; i < 9; i++){
+		cin >> buf[i];
+	}
+	for (int i = 9; i < n; i++){
+		cin >> a;
+		if (buf[i%9] % 2 == 0)
+			tmax2 = max(tmax2, buf[i%9]);
+		tmax1 = max(tmax1, buf[i%9]);
+		if (a % 2 == 0 && a * tmax1 > mp) mp = a * tmax1;
+		if (a % 2 != 0 && a * tmax2 > mp) mp = a * tmax2;
+		buf[i % 9] = a;
+	}
+	cout << mp;
+}

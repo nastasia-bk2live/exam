@@ -1,0 +1,26 @@
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+#include <fstream>
+
+using namespace std;
+
+
+int main() {
+	ifstream in;
+	in.open("input.txt");
+	int ans = 0, count =0;
+	char a, b;
+	while (!in.eof()) {
+		in >> a;
+		if (a == 'A' || a == 'B' || a == 'C')count++;
+		else {
+			if (count > ans) ans = count;
+			count = 0;
+		}
+	}
+	cout << ans;
+	in.close();
+}

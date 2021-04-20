@@ -1,0 +1,50 @@
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+
+
+int main() {
+    int n, a, sum = 0, min = 10001, ans = 0, count = 0;
+    vector <int> arr;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        cin >> a;
+        arr.push_back(a);
+    }
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if ((arr[i] + arr[j]) % 12 == 0) count++;
+        }
+    }
+    cout << count;
+}
+
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+
+
+int main() {
+    int n, a, sum = 0, min = 10001, ans = 0, count = 0, rem[12] = {0};
+    vector <int> arr;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        cin >> a;
+        rem[a % 12]++;
+    }
+    count = (rem[0] * (rem[0] - 1) + rem[6] * (rem[6] - 1)) / 2;
+    for (int i = 1; i <= 5; i++){
+        count = count + rem[i] * rem[12 - i];
+    }
+    cout << count;
+}

@@ -1,0 +1,65 @@
+#include <iostream>
+#include <algorithm>
+#include <ctime>
+#include <cstdlib>
+#include <fstream>
+using namespace std;
+
+
+void main() {
+	ifstream in;
+	in.open("input.txt");
+	int sum = 0, res = 0;
+	int n, par[20][2], t, i;
+	in >> n;
+	for (i = 0; i < n; i++) {
+		in >> par[i][0] >> par[i][1];
+	}
+	for (i = 0; i < 1024 * 1024; i++) {
+		t = i;
+		sum = 0;
+		for (int j = 0; j < n; j++) {
+			sum += par[j][t % 2];
+			t /= 2;
+
+		}
+		if (sum > res && sum % 5== 0) res = sum;
+	}
+	cout << res;
+}
+
+#include <iostream>
+#include <algorithm>
+#include <ctime>
+#include <cstdlib>
+#include <fstream>
+#include <vector>
+using namespace std;
+
+
+void main() {
+	ifstream in;
+	in.open("input.txt");
+	int sum = 0;
+	vector<int> osts(5, 1000001);
+	vector<int> osts_1(5, 1000001);
+	int n, a, b, delta;
+	in >> n;
+	for (int i = 0; i < n; i++) {
+		in >> a >> b;
+		sum += max(a, b);
+		delta = abs(a - b);
+		osts_1 = osts;
+		for (int o = 0; o < 5; o++) {
+			osts_1[(delta + o) % 5] = min(osts[(delta + o) % 5], delta + osts[o]);
+		}
+		osts_1[delta % 5] = min(osts[delta % 5], delta);
+		osts = osts_1;
+	}
+	if (sum % 5 == 0) {
+		cout << sum;
+	}
+	else {
+		cout << sum - osts[sum % 5];
+	}
+}

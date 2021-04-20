@@ -1,0 +1,258 @@
+задача 1
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+
+using namespace std;
+
+
+
+int main() {
+	int a;
+	bool flag;
+	for ( a = 0; a < 1000; a++) {
+		flag = false;
+		for (size_t x = 0; x < 1000; x++)
+			for (size_t y = 0; y < 1000; y++) {
+				if (!((2 * x + y < a) || (y > 20) || (x > 30)))
+					flag = true;
+			}
+		if (!flag) break;
+	}
+	cout << a;
+}
+
+задача 2
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+
+using namespace std;
+
+
+
+int main() {
+	int a;
+	bool flag;
+	for ( a = 100; a >= 0; a--) {
+		flag = false;
+		for (int x = 100; x >= 0; x--)
+			for (int y = 100; y >= 0; y--) {
+				if (!((2 * x + y > a) || (y > 20) || (x > 30)))
+					flag = true;
+			}
+		if (!flag) break;
+	}
+	cout << a;
+}
+
+задача 3
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+
+using namespace std;
+
+
+
+int main() {
+	int a;
+	bool flag;
+	for (a = 0; a < 1000; a++) {
+		flag = false;
+		for (size_t x = 0; x < 1000; x++)
+			for (size_t y = 0; y < 1000; y++) {
+				if (!((2 * x + y < a) || (y > x) || (x > 30)))
+					flag = true;
+			}
+		if (!flag) break;
+	}
+	cout << a;
+}
+
+задача 4
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+
+using namespace std;
+
+
+
+int main() {
+	int a;
+	bool flag;
+	for (a = 0; a < 1000; a++) {
+		flag = false;
+		for (size_t x = 0; x < 1000; x++)
+			for (size_t y = 0; y < 1000; y++) {
+				if (!((x*y < 2*a) || (y < x) || (y >= 11)))
+					flag = true;
+			}
+		if (!flag) break;
+	}
+	cout << a;
+}
+
+задача 5
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+
+using namespace std;
+
+
+
+int main() {
+	int a;
+	bool flag;
+	for (a = 100; a > 0; a--) {
+		flag = false;
+		for (int x = 100; x > 0; x--)
+			for (int y = 100; y > 0; y--) {
+				if (!((y+2*x != 21) || (y > a) || (x > a)))
+					flag = true;
+			}
+		if (!flag) break;
+	}
+	cout << a;
+}
+
+задача 6
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+
+using namespace std;
+
+
+
+int main() {
+	int a;
+	bool flag;
+	for (a = 100; a > 0; a--) {
+		flag = false;
+		for (int x = 100; x > 0; x--)
+			for (int y = 100; y > 0; y--) {
+				if (!((y-2*x != 11) || (2*y > a) || (x > a)))
+					flag = true;
+			}
+		if (!flag) break;
+	}
+	cout << a;
+}
+
+задача 7
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+
+using namespace std;
+
+
+
+int main() {
+	int a;
+	bool flag;
+	for (a = 1; a < 1000; a++) {
+		flag = false;
+		for (size_t x = 1; x < 1000; x++)
+			for (size_t y = 1; y < 1000; y++) {
+				if (!((y + 3 * x != 19) || (2*x + 16 < a) || (3 * y < a)))
+					flag = true;
+			}
+		if (!flag) break;
+	}
+	cout << a;
+}
+
+
+задача 8
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+
+using namespace std;
+
+
+
+int main() {
+	int a;
+	bool flag;
+	for (a = 0; a < 100; a++) {
+		flag = false;
+		for (size_t x = 0; x < 100; x++)
+			for (size_t y = 0; y < 100; y++) {
+				if (!((x + 3 * y > 19) || (2 * x - y > 3) || (y + 2 * x < a)))
+					flag = true;
+			}
+		if (!flag) break;
+	}
+	cout << a;
+}
+
+задача 9
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+
+using namespace std;
+
+
+
+int main() {
+	int a;
+	bool flag;
+	for (a = 0; a < 1000; a++) {
+		flag = false;
+		for (size_t x = 1; x < 1000; x++)
+			for (size_t y = 1; y < 1000; y++) {
+				if (!((y + 2 * x < a) || (3 * y + 2 * x > 123) || (3 * y - x > 30)))
+					flag = true;
+			}
+		if (!flag) break;
+	}
+	cout << a;
+}
+
+
+задача 10
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+
+using namespace std;
+bool fnc(int a, int x, int y) {
+	return ((y - sin(x / 5) > 10) || (4 * y + x * x > 120) || (y - x * x - a * a < 10 - 2 * a * x));
+}
+
+
+int main() {
+	int a = 0, min = 1 , max = 1000;
+	bool flag;
+	while (true){
+		flag = true;
+		for (size_t x = min; x < max + 1; x++) {
+			for (size_t y = min; y < max + 1; y++) {
+				if (!fnc(a, x, y)) {
+					flag = false;
+					break;
+				}
+			}
+			if (!flag) break;
+		}
+		if (flag) cout << a << " ";
+		else break;
+		a++;
+	}
+}

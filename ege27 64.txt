@@ -1,0 +1,115 @@
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+
+
+int main() {
+	int n, a, ans = 0, r;
+	vector <int> arr;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		cin >> a;
+		arr.push_back(a);
+	}
+	cin >> r;
+	for (int i = 0; i < n; i++){
+		for (int j = i+1; j < n; j++){
+			if ((arr[i] * arr[j] > ans) && (arr[i] * arr[j] % 26 != 0))
+				ans = arr[i] * arr[j];
+		}
+	}
+	cout << ans << endl;
+	if (r == ans) cout << "yes";
+	else cout << "no";
+}
+
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+
+
+int main() {
+	int n, a, ans = 0, r, m0_1 = 0, m0_2 = 0, m2_1 = 0, m13_1 = 0;
+	vector <int> arr;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		cin >> a;
+		if (a % 2 == 0) ans = max(max(ans, a * m0_1), a * m2_1);
+		else if (a % 13 == 0) ans = max(max(ans, a * m0_1), a * m13_1);
+		else ans = max(ans, m0_1*m0_2);
+		if (a % 26 != 0)
+			if (a > m0_1) {
+				m0_2 = m0_1;
+				m0_1 = a;
+			}
+			else if (a > m0_2) m0_2 = a;
+		if ((a % 13 != 0) && (a % 2 == 0) && (a > m2_1)) m2_1 = a;
+		if ((a % 13 == 0) && (a % 2 != 0) && (a > m13_1)) m13_1 = a;
+	}
+	cin >> r;
+	cout << ans << endl;
+	if (r == ans) cout << "yes";
+	else cout << "no";
+}
+
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+
+
+int main() {
+    int n, a, ans = 0, r, m0_1 = 0, m0_2 = 0, m2_1 = 0, m2_2 = 0, m13_1 = 0, m13_2 = 0;
+    vector <int> arr;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        cin >> a;
+        if (a % 26 != 0) {
+            if (a % 2 == 0) {
+                if (a > m2_1) {
+                    m2_2 = m2_1;
+                    m2_1 = a;
+                }
+                else if (a > m2_2) m2_2 = a;
+            }
+            else if (a % 13 == 0) {
+                if (a > m13_1) {
+                    m13_2 = m13_1;
+                    m13_1 = a;
+                }
+                else if (a > m13_2) m13_2 = a;
+            }
+            else {
+                if (a > m0_1) {
+                    m0_2 = m0_1;
+                    m0_1 = a;
+                }
+                else if (a > m0_2) m0_2 = a;
+            }
+        }
+    }
+	cin >> r;
+    if (m0_1* m0_2 > ans) ans = m0_1 * m0_2;
+    if (m0_1* m2_1 > ans) ans = m0_1 * m2_1;
+    if (m0_1* m13_1 > ans) ans = m0_1 * m13_1;
+    if (m2_1* m2_2 > ans) ans = m2_1 * m2_2;
+    if (m13_1* m13_2 > ans) ans = m13_1 * m13_2;
+
+	cout << ans << endl;
+	if (r == ans) cout << "yes";
+	else cout << "no";
+}

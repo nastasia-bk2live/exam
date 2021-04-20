@@ -1,0 +1,52 @@
+#include <iostream>
+#include <algorithm>
+#include <ctime>
+#include <cstdlib>
+#include <fstream>
+using namespace std;
+
+
+void main() {
+	ifstream in;
+	in.open("input.txt");
+	int sum = 0, res = 20000000;
+	int n, par[20][2], t, i;
+	in >> n;
+	for (i = 0; i < n; i++) {
+		in >> par[i][0] >> par[i][1];
+	}
+	for (i = 0; i < 1024 * 1024; i++) {
+		t = i;
+		sum = 0;
+		for (int j = 0; j < n; j++) {
+			sum += par[j][t % 2];
+			t /= 2;
+
+		}
+		if (sum < res && sum % 3 != 0) res = sum;
+	}
+	cout << res;
+}
+
+#include <iostream>
+#include <algorithm>
+#include <ctime>
+#include <cstdlib>
+#include <fstream>
+using namespace std;
+
+
+void main() {
+	ifstream in;
+	in.open("input.txt");
+	int sum = 0;
+	int n, a, b, min_delta = 1000000;
+	in >> n;
+	for (int i = 0; i < n; i++) {
+		in >> a >> b;
+		sum += min(a, b);
+		if (abs(a - b) < min_delta && abs(a-b)%3!=0)min_delta = abs(a - b);
+	}
+	if (sum % 3 != 0) cout << sum;
+	else cout << sum + min_delta;
+}

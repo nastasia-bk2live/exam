@@ -1,0 +1,29 @@
+11
+#include<iostream>
+#include<string>
+#include <vector>
+#include<algorithm>
+#include <fstream>
+
+using namespace std;
+
+int main() {
+	int s, n;
+	cin >> s >> n;
+	vector<int> data(n);
+	for (int i = 0; i < n; i++) {
+		cin >> data[i];
+	}
+	sort(data.begin(), data.end());
+	int count, sum =0 ;
+	for (count = 0; count < n; count++) {
+		if (sum + data[count] > s)break;
+		sum += data[count];
+	}
+	int delta = s - sum, max;
+	for (int i = count; i < n; i++) {
+		if (data[i] - data[count] <= delta)
+			max = data[i];
+	}
+	cout << count << " " << max;
+}

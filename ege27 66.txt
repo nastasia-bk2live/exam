@@ -1,0 +1,77 @@
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+
+
+int main() {
+    int n, a, ans = 0, sum = 0, min = 10001;
+    vector <int> arr;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        cin >> a;
+        arr.push_back(a);
+    }
+    for (int i = 0; i < n; i++) {
+        sum += arr[i];
+        if ((arr[i] % 4 != 0) && (arr[i] < min)) min = arr[i];
+    }
+    if (sum % 4 != 0) cout << n << " " << sum;
+    else if (min == 10001) cout << 0 << " " << 0;
+    else cout << n-1 << " " << sum-min;
+}
+
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+
+
+int main() {
+    int n, a, sum = 0, min = 10001, ans = 0;
+    vector <int> arr;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        cin >> a;
+        if (sum % 4 != 0) ans = sum;
+        else if (min == 10001) ans = 0;
+        else ans = sum - min;
+        sum += a;
+        if ((a % 4 != 0) && (a < min)) min = a;
+    }
+    if (ans == sum) cout << n << " " << sum;
+    if (ans = 0) cout << 0 << " " << 0;
+    if (ans = sum - min) cout << n - 1 << " " << sum - min;
+}
+
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+
+
+int main() {
+    int n, a, sum = 0, min = 10001, ans = 0;
+    vector <int> arr;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        cin >> a;
+        sum += a;
+        if ((a % 4 != 0) && (a < min)) min = a;
+    }
+    if (sum % 4 != 0) cout << n << " " << sum;
+    else if (min == 10001) cout << 0 << " " << 0;
+    else cout << n - 1 << " " << sum - min;
+}

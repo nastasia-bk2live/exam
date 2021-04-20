@@ -1,0 +1,141 @@
+задание 23
+13
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+
+int main() {
+    int arr[50] = { 0 };
+    arr[5] = 1;
+    for (int i = 5; i < 50; i++)
+    {
+        if (i % 3 == 0) arr[i] += arr[i / 3];
+        arr[i] += arr[i - 1];
+
+    }
+    cout << arr[49];
+}
+
+17
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+
+int main() {
+    int arr[20] = { 0 };
+    arr[2] = 1;
+    double sq;
+    for (int i = 3; i < 20; i++)
+    {
+        sq = sqrt(i);
+        if (sq == (int)sq) arr[i] += arr[(int)sq];
+        arr[i] += arr[i - 1];
+        arr[i] += arr[i - 3];
+
+    }
+    cout << arr[19];
+}
+
+46
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+
+int main() {
+    int arr[29] = { 0 };
+    arr[2] = 1;
+    double sq;
+    for (int i = 2; i < 8; i++)
+    {
+        if (i % 2 == 0) arr[i] += arr[i / 2];
+        if (i % 3 == 0) arr[i] += arr[i / 3];
+        arr[i] += arr[i - 1];
+    }
+    for (int i = 2; i < 7; i++)
+    {
+        arr[i] = 0;
+    }
+    for (int i = 7; i < 29; i++)
+    {
+        if (i % 2 == 0) arr[i] += arr[i / 2];
+        if (i % 3 == 0) arr[i] += arr[i / 3];
+        arr[i] += arr[i - 1];
+    }
+    cout << arr[28];
+}
+
+81
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+
+int main() {
+    int arr[26] = { 0 };
+    arr[1] = 1;
+    for (int i = 1; i < 21; i++)
+    {
+        if (i % 2 != 0) arr[i] += arr[(i-1)/2];
+        arr[i] += arr[i - 1];
+    }
+    for (int i = 22; i < 26; i++)
+    {
+        if (i % 2 != 0) arr[i] += arr[(i - 1) / 2];
+        arr[i] += arr[i - 1];
+    }
+    cout << arr[25];
+}
+
+96
+#include<iostream>
+#include<string>
+#include <vector>
+#include<math.h>
+#include<cstdlib>
+
+using namespace std;
+
+
+int main() {
+    int arr[21] = { 0 };
+    arr[2] = 1;
+    for (int i = 3; i < 11; i++)
+    {
+        arr[i] += arr[i - 1];
+        arr[i] += arr[i - 3];
+    }
+    for (int i = 3; i < 10; i++)
+    {
+        arr[i] = 0;
+    }
+    for (int i = 10; i < 15; i++)
+    {
+        arr[i] += arr[i - 1];
+        arr[i] += arr[i - 3];
+    }
+    for (int i = 16; i < 21; i++)
+    {
+        arr[i] += arr[i - 1];
+        arr[i] += arr[i - 3];
+    }
+    cout << arr[20];
+}
